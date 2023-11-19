@@ -1,0 +1,24 @@
+{% extends "partials/base.html" %}
+
+{% load static %}
+{% block title %}
+Our Products
+{% endblock title %}
+{% block content %}
+<div class="flex items-center p-5">
+  <img src="{% static 'images/5.jpg' %}" class="lg:w-[100%] w-[100%] h-[60%] h-[100%] lg:mt-40"
+    style="filter: opacity(10%); top: 1; right: 0; z-index: -1; position: absolute;">
+  <p class="lg:mt-[5rem] lg:px-[10rem]">
+    <span class="text-yellow-600 font-bold lg:text-4xl">Our Products</span><br><br><br>
+    <br>
+    <span class="">
+      Admissions <br>
+      Full or Partial Scholarships <br>
+      Educational Loans <br>
+      Proof of fund services <br>
+      Official writings <br>
+      General Consultations <br>
+    </span>
+  </p><br><br><br><br><br><br><br><br><br><br>
+</div>
+{% endblock content %}

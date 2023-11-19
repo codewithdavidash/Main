@@ -1,0 +1,3 @@
+cd Downloads/
+
+sudo dpkg -i code_1.78

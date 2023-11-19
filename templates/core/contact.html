@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="VC3VgfLx5PXLe9BDjaJ0S2-eutu328dXbx8hRFx4Av8" />
+    <title>Contact Us | Tigers Educational Consultancy</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="{% static 'js/tailwindcss.3' %}"></script>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+</head>
+
+<body>
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+    <style>
+        #mySidebar a {
+            display: block;
+            padding: 10px;
+        }
+
+        #navbar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+
+        #name1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-stretch: narrower;
+        }
+
+        #name2 {
+            font-family: serif;
+        }
+
+        #nav-links a {
+            display: block;
+            padding: 35px;
+        }
+    </style>
+    <div class="lg:px-[6rem] items-center bg-white shadow justify-between flex" id="navbar">
+        <a href="/" class="flex items-center p-2">
+            <img src="{% static 'images/logo.png' %}" alt="" class="lg:h-20 h-[4rem]">
+            <div>
+                <span class="font-bold text-xs lg:text-xl text-xs text-yellow-600" id="name1">TIGERS <br>
+                    EDUCATIONAL</span><br>
+                <span class="font-normal lg:text-sm text-xs text-yellow-600" id="name2">CONSULTANCY</span>
+            </div>
+        </a>
+        <div class="hidden lg:block">
+            <div class="flex" id="nav-links">
+                <a href="/" class="text-yellow-500 bg-gray-100">Home</a>
+                <a href="/services/" class="hover:text-yellow-600 hover:bg-gray-100">Our Services</a>
+                <a href="/products/" class="hover:text-yellow-600 hover:bg-gray-100">Products</a>
+                <a href="/about/" class="hover:text-yellow-600 hover:bg-gray-100">About Us</a>
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <a href="/admins/" class="hover:text-yellow-600 hover:bg-gray-100">View Forms</a>
+                {% else %}
+                <a href="/admins/" class="hover:text-yellow-600 hover:bg-gray-100">Status</a>
+                {% endif %}
+                {% else %}
+                {% if request.user.is_superuser %}
+                <a href="/admins/" class="hover:text-yellow-600 hover:bg-gray-100">View Forms</a>
+                {% else %}
+                <a href="/login/" class="hover:text-yellow-600 hover:bg-gray-100">Login</a>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <div class="block mr-5 lg:hidden">
+            <div class="w-[18rem] h-[100%] bg-gray-100" style="top: 0; position: fixed; right: 0; display:none"
+                id="mySidebar">
+                <button onclick="w3_close()" class="p-2 border-b border-yellow-600">Close &times;</button><br><br>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <a href="/" class="hover:bg-gray-500">Home</a>
+                        <a href="/services/" class="hover:bg-gray-500 w-[20rem]">
+                            Our Services
+                        </a>
+                        <a href="/products/" class="hover:bg-gray-500 w-[20rem]">
+                            Products
+                        </a>
+                        <a href="/about/" class="hover:bg-gray-500 w-[20rem]">
+                            About Us
+                        </a>
+                        <a href="/contact/" class="hover:bg-gray-500 w-[20rem]">
+                            Contact Us
+                        </a>
+                        <a href="/admins/" class="hover:bg-gray-500 w-[20rem]">
+                            Status
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Content -->
+            <div class="">
+                <button class="font-bold" onclick="w3_open()">☰</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Contact Content -->
+    <div class="flex items-center justify-center lg:py-[5rem]">
+        <img src="{% static 'images/4.jpg' %}" class="lg:h-[100%] w-[95%]"
+            style="filter: opacity(10%); top: 0; right: 0; z-index: -1; position: absolute;">
+        <form action="" method="post" class="mb-40 shadow-xl border lg:p-5 p-2 lg:p-10" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if form.errors or form.non_field_errors %}
+            <div class="p-2 text-white bg-red-300 lg:w-[18rem] w-[12rem]">
+                {% for field in form %}
+                {{ field.errors }}
+                {% endfor %}
+                {{ form.non_field_errors }}
+            </div><br>
+            {% endif %}
+            <label class="font-semibold text-sm lg:text-xl">First Name <span class="text-red-500">*</span></label><br>
+            {{ form.first_name }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Middle Name <span class="text-red-500">*</span></label><br>
+            {{ form.middle_name }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Last Name <span class="text-red-500">*</span></label><br>
+            {{ form.last_name }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Date Of Birth <span
+                    class="text-red-500">*</span></label><br>
+            {{ form.date_of_birth }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Phone <span class="text-red-500">*</span></label><br>
+            {{ form.phone }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Email Address <span
+                    class="text-red-500">*</span></label><br>
+            {{ form.email }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Address <span class="text-red-500">*</span></label><br>
+            {{ form.address }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Educational Qualification<span
+                    class="text-red-500">*</span></label><br>
+            {{ form.educational_qualification }} <br>
+            <label class="font-semibold text-sm lg:text-xl">CV <span class="text-red-500">*</span></label><br>
+            {{ form.cv }} <br>
+            <label class="font-semibold text-sm lg:text-xl">Reason For Consultancy<span
+                    class="text-red-500">*</span></label><br>
+            {{ form.reason }} <br><br>
+            <button type="submit"
+                class="w-[12rem] lg:w-[21rem] p-3 bg-yellow-600 hover:bg-yellow-800 text-white">Submit</button>
+        </form>
+    </div>
+    <div class="p-10 text-yellow-600 bg-black">
+        <div class="flex justify-center items-center">
+            <div>
+                <div>
+                    <img src="{% static 'images/logo.png' %}" class="h-[5rem] ml-[4.3rem]">
+                    <p class="text-center font-bold text-xl"
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                        Tigers Education. <br>
+                        Consultancy Services
+                    </p>
+                    <p class="text-center text-xs">Shape Your Education And Future...</p>
+                    <p class="text-center text-xs">Reg-Number: <span>6862509</span></p><br>
+                    <p class="text-center font-bold text-xl">ABOUT US</p><br>
+                    <p class="text-center"><a href="/about/"> Who We Are</a></p>
+                    <p class="text-center"><a href="/contact/"> Contact Us</a></p>
+                    <p class="text-center"><a href="/about/"> About Us</a></p><br>
+                    <p class="text-center font-bold text-xl">What We Do</p><br>
+                    <p class="text-center"><a href="/about/"> Who We Are</a></p>
+                    <p class="text-center"><a href="/services/">Our Services</a></p>
+                    <p class="text-center"><a href="/aims/">Aims And Objectives</a></p>
+                    {% if request.user.is_authenticated %}
+                    <p class="text-center"><a href="/logout/">Logout {{ user }}</a></p>
+                    {% else %}
+                    <p class="text-center"><a href="/login/">Login</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div><br>
+        <p class="border-t border-gray-700 text-center text-gray-400 mt-5"><br>
+            © 2023 Tigers Education Consultancy Services Limited. All Rights Reserved
+        </p>
+    </div>
+</body>
+
+</html>

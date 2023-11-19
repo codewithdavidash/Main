@@ -1,0 +1,35 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Login into your account
+{% endblock title %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<script>
+  alert('{{ message }}');
+</script>
+{% endfor %}
+{% endif %}
+<div class="py-12 lg:mt-[5rem] items-center justify-center flex">
+  <form action="" method="post" class="rounded-md shadow-xl bg-gray-100 lg:p-[3rem] p-[2rem]">
+    {% csrf_token %}
+    {% if form.errors or form.non_field_errors %}
+    <div class="p-3 text-white bg-red-500 lg:w-[18rem] w-[12rem]">
+      {% for field in form %}
+      {{ field.errors }}
+      {% endfor %}
+      {{ form.non_field_errors }}
+    </div><br>
+    {% endif %}
+    <h1 class="text-center font-semibold lg:text-xl text-md">Login</h1><br>
+    <label class="text-md">Username</label><br>
+    {{ form.username }} <br>
+    <label class="text-md">Password</label><br>
+    {{ form.password }} <br> <br>
+    <button type="submit" class="w-[12rem] lg:w-[18rem] p-3 bg-yellow-600 hover:bg-yellow-800 text-white">Login</button>
+    <br>
+    <a href="/signup/" class="text-sm underline text-purple-400">Don't have an account?</a>
+  </form>
+</div>
+{% endblock content %}

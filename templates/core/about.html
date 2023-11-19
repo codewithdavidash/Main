@@ -1,0 +1,25 @@
+{% extends "partials/base.html" %}
+
+{% load static %}
+{% block title %}
+About Us
+{% endblock title %}
+{% block content %}
+<div class="flex items-center p-5">
+  <img src="{% static 'images/2.jpg' %}" class="lg:w-[100%] lg:h-[100%] h-[70%]"
+    style="filter: opacity(10%); top: 0; right: 0; z-index: -1; position: absolute;">
+  <p class="lg:mt-[5rem] lg:px-[10rem]">
+    <span class="text-yellow-600 font-bold lg:text-4xl">About Us</span><br><br><br>
+    <br>
+    <span class="">
+      Tigers Consultancy is aimed at the total paradigm of our clients and students. <br>
+      Providing the totality of services that is aimed at success along the path of Educational related migration.
+      <br><br>
+      So, we work school admission all around the globe, have available educational loan services, carry out services of
+      full and partial scholarships and above all, <br> POF issues. <br> We also engage in all form of formal and well
+      organized writings as Curriculum Vitae, <br> Personal Statements, Introduction Letters etc and also carry out
+      general consultations on every educational and <br> non-educational migration issues. <br><br>
+    </span>
+  </p><br><br><br><br><br><br><br><br><br><br>
+</div>
+{% endblock content %}

@@ -1,0 +1,123 @@
+{% extends "partials/base.html" %}
+
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<script>
+    alert('{{message}}');
+</script>
+{% endfor %}
+{% endif %}
+<div class="bg-yellow-700 lg:h-[23rem]">
+    <div class="flex items-center justify-center">
+        <img src="" id="image" alt="" class="lg:w-[40rem] lg:h-[30rem]">
+        <script type="text/javascript">
+            let image = document.getElementById('image');
+            let images = [
+                "{% static 'images/6.jpg' %}",
+                "{% static 'images/7.jpg' %}",
+                "{% static 'images/code_image7.jpg' %}",
+                "{% static 'images/code_image14.jpg' %}",
+                "{% static 'images/code_image8.jpg' %}",
+                "{% static 'images/code_image13.jpg' %}",
+                "{% static 'images/code_image15.jpg' %}",
+                "{% static 'images/code_image10.jpg' %}"
+            ]
+            setInterval(function () {
+                let random = Math.floor(Math.random() * 4);
+                image.src = images[random];
+            }, 4000)
+        </script>
+    </div>
+</div>
+<div class="lg:mt-[15rem] mt-[5rem]">
+    <h1 class="text-center font-bold text-yellow-600"
+        style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">WELCOME TO</h1>
+    <h1 class="text-center font-bold text-yellow-600 text-xl lg:text-5xl" style="font-family: Malgun Gothic;">
+        TIGERS EDUCATIONAL <br>
+        <span style="font-family: Arial;" class="lg:text-4xl">CONSULTANCY</span>
+    </h1>
+    <div class="flex justify-center items-center mt-10 px-5">
+        <div class="grid lg:grid-cols-2  md:grid-cols-2 sm:grid-cols-2 lg:gap-10 grid-cols-1 gap-5">
+            <div class="border shadow-lg border-r hover:shadow-xl p-1 w-[18rem] lg:w-[30rem]"
+                style="border-right: 4px solid teal;">
+                <img src="{% static 'images/1.jpg' %}" class="lg:w-[30rem] lg:h-[20rem]"
+                    style="position: relative; z-index: -1; filter: grayscale(100%);">
+                <div class="px-4">
+                    <h1 class="p-5 font-thin text-4xl" style="font-family: 'Courier New', Courier, monospace;">Who We
+                        Are</h1>
+                    <p class="w-[6rem] p-[0.05rem] bg-yellow-600"></p>
+                    <p><br>
+                        We are an educational consultancy firm that offers expert guidance and advice to students and
+                        professionals seeking to advance their education and career. Our team consists of experienced
+                        consultants who have a wealth of knowledge and expertise in various academic fields and
+                        industries.
+                    </p>
+                </div>
+            </div>
+            <div class="border shadow-lg border-r hover:shadow-xl p-1 w-[18rem] lg:w-[30rem]"
+                style="border-right: 4px solid #fcb900;">
+                <img src="{% static 'images/2.jpg' %}" class="lg:w-[30rem] lg:h-[20rem]"
+                    style="filter: grayscale(100%); position: relative; z-index: -1;">
+                <div class="px-4">
+                    <h1 class="p-5 font-thin text-4xl" style="font-family: 'Courier New', Courier, monospace;">What We
+                        Do</h1>
+                    <p class="w-[6rem] p-[0.05rem] bg-yellow-600"></p>
+                    <p><br>
+                        At Tigers, our services ranges from general consultations on education and migration or travel
+                        (Japa), School applications and admissions, Student permits and Visa applications and guidance,
+                        Educational loan applications and Proof of fund services, full and partial scholarship programs,
+                        all forms of formal writing (CV or Curriculum Vitea, Personal Statement, Statement of Purpose,
+                        Introduction Letters and other formal and official writings), Business registration details. If
+                        you never had a record of education after your high school or secondary school education, we can
+                        also be of help no matter how long the time frame.
+                    </p>
+                </div>
+            </div>
+            <div class="border shadow-lg border-r hover:shadow-xl p-1 w-[18rem] lg:w-[30rem]"
+                style="border-right: 4px solid #98bb49;">
+                <img src="{% static 'images/3.jpg' %}" class="lg:w-[30rem] lg:h-[20rem]"
+                    style="filter: grayscale(100%); position: relative; z-index: -1;">
+                <div class="px-4">
+                    <h1 class="p-5 font-thin text-4xl" style="font-family: 'Courier New', Courier, monospace;">Why
+                        Choose Us</h1>
+                    <p class="w-[6rem] p-[0.05rem] bg-yellow-600"></p>
+                    <p><br>
+                        We are committed to providing our clients with the highest quality of service. Our consultants
+                        have a deep understanding of the education and career landscape and are dedicated to helping our
+                        clients achieve their goals. We offer flexible and customized solutions that cater to the unique
+                        needs of each client. Whether you are a student seeking to pursue higher education, a
+                        professional looking to advance your career, or an organization seeking training and development
+                        solutions, we are here to help you achieve your goals. Contact us today to learn more about our
+                        services.
+                    </p>
+                </div>
+            </div>
+            <div class="border shadow-lg border-r hover:shadow-xl p-1 w-[18rem] lg:w-[30rem]"
+                style="border-right: 4px solid red;">
+                <img src="{% static 'images/4.jpg' %}" class="lg:w-[30rem] lg:h-[20rem]"
+                    style="filter: grayscale(100%); position: relative; z-index: -1;">
+                <div class="px-4">
+                    <h1 class="p-5 font-thin text-4xl" style="font-family: 'Courier New', Courier, monospace;">Our
+                        Products</h1>
+                    <p class="w-[6rem] p-[0.05rem] bg-yellow-600"></p>
+                    <p><br>
+
+                        Admissions <br>
+                        Full or Partial Scholarships <br>
+                        Educational Loans <br>
+                        Proof of fund services <br>
+                        Official writings <br>
+                        General Consultations <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

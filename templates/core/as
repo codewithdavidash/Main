@@ -1,0 +1,38 @@
+<div class="flex items-center justify-center lg:py-[5rem]">
+    <img src="{% static 'images/4.jpg' %}" class="lg:h-[100%] w-[95%]"
+        style="filter: opacity(10%); top: 0; right: 0; z-index: -1; position: absolute;">
+    <form action="" method="post" class="mb-40 shadow-xl border p-5 lg:p-10" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors or form.non_field_errors %}
+        <div class="p-2 text-white bg--300 lg:w-[18rem] bg-gray-500">
+            {% for field in form %}
+            {{ field.errors }}
+            {% endfor %}
+            {{ form.non_field_errors }}
+        </div><br>
+        {% endif %}
+        <label class="font-semibold text-xl">First Name <span class="text-red-500">*</span></label><br>
+        {{ form.first_name }} <br>
+        <label class="font-semibold text-xl">Middle Name <span class="text-red-500">*</span></label><br>
+        {{ form.middle_name }} <br>
+        <label class="font-semibold text-xl">Last Name <span class="text-red-500">*</span></label><br>
+        {{ form.last_name }} <br>
+        <label class="font-semibold text-xl">Date Of Birth <span class="text-red-500">*</span></label><br>
+        {{ form.date_of_birth }} <br>
+        <label class="font-semibold text-xl">Phone <span class="text-red-500">*</span></label><br>
+        {{ form.phone }} <br>
+        <label class="font-semibold text-xl">Email Address <span class="text-red-500">*</span></label><br>
+        {{ form.email }} <br>
+        <label class="font-semibold text-xl">Address <span class="text-red-500">*</span></label><br>
+        {{ form.address }} <br>
+        <label class="font-semibold text-xl">Educational Qualification<span
+                class="text-red-500">*</span></label><br>
+        {{ form.educational_qualification }} <br>
+        <label class="font-semibold text-xl">CV <span class="text-red-500">*</span></label><br>
+        {{ form.cv }} <br>
+        <label class="font-semibold text-xl">Reason For Consultancy<span class="text-red-500">*</span></label><br>
+        {{ form.reason }} <br><br>
+        <button type="submit"
+            class="w-[18rem] lg:w-[21rem] p-3 bg-yellow-600 hover:bg-yellow-800 text-white">Submit</button>
+    </form>
+</div>
